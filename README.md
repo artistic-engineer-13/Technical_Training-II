@@ -1,6 +1,6 @@
 # 🚀 Technical Training II - MERN Stack Projects              
    
-Welcome to my **Technical Training II** repository.
+Welcome to my **Technical Training II** repository.         
 
 This repository contains the web development projects that I build as part of my **MCA Semester III Technical Training-II** course.
 
