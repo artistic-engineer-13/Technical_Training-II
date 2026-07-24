@@ -1,4 +1,4 @@
-# 🚀 Technical Training II - MERN Stack Projects
+# 🚀 Technical Training II - MERN Stack Projects              
    
 Welcome to my **Technical Training II** repository.
 
