@@ -4,7 +4,7 @@ Welcome to my **Technical Training II** repository.
 
 This repository contains the web development projects that I build as part of my **MCA Semester III Technical Training-II** course.  
 
-The main objective of this repository is to strengthen my understanding of **Full Stack Web Development** using the **MERN Stack** by building  practical projects.                 
+The main objective of this repository is to strengthen my understanding of **Full Stack Web Development** using the **MERN Stack** by building  practical projects.                  
             
 ---
     
