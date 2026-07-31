@@ -37,7 +37,7 @@ The repository will continue to grow throughout the semester as I complete new p
 - Git
 - GitHub
 
----
+---  
 
 ## 📂 Projects
 
