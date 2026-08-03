@@ -9,7 +9,7 @@ The main objective of this repository is to strengthen my understanding of **Ful
 ---                 
      
 ## 📚 About This Repository                                     
-
+ 
 In this repository, I will be uploading multiple projects covering different concepts of modern web development.         
 
 Each project is created to improve my problem-solving skills, coding practices, and understanding of real-world application development.
