@@ -24,7 +24,7 @@ The repository will continue to grow throughout the semester as I complete new p
 - HTML5
 - CSS3
 - JavaScript (ES6+)
-- React.js
+- React.js   
 
 ### Backend                 
 - Node.js
