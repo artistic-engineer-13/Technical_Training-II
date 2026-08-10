@@ -26,7 +26,7 @@ The repository will continue to grow throughout the semester as I complete new p
 - JavaScript (ES6+)
 - React.js
 
-### Backend
+### Backend                 
 - Node.js
 - Express.js
 
