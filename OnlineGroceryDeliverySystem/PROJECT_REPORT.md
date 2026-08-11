@@ -9,7 +9,7 @@ FreshCart is a MERN Stack hyper-local e-grocery delivery platform. It supports r
 ## 2. Requirements Compliance Sheet
 
 | Feature Specifications | Backend Implementation | Frontend UI Views | Compliance Status |
-| :--- | :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |  
 | **Authentication & Profiles** | Express router JWT cookies session validation, Joi validation schemas, and Nodemailer password recovery. | `Login.jsx`, `Register.jsx`, `ForgotPassword.jsx`, `ResetPassword.jsx`, and `Profile.jsx`. | **100% Compliant** |
 | **Storefront Catalog** | MongoDB Atlas weighted text search index, categories slugs, and related items aggregations. | `Home.jsx` (with price, category and veg filters), and `ProductDetails.jsx`. | **100% Compliant** |
 | **Shopping Cart & Wishlist** | Persistent Cart schemas with pre-save calculations; Wishlist collections. | `Cart.jsx` billing breakdowns and `Wishlist.jsx`. | **100% Compliant** |
