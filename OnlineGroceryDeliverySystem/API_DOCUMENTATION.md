@@ -3,7 +3,7 @@
 All request URLs start with the base path `/api`. Authentication tokens are carried securely in HttpOnly cookies named `token`, or via Authorization bearer headers (`Authorization: Bearer <token>`).
 
 ---   
-
+    
 ## 🔒 Authentication & Account Directory
 
 ### 1. Register User Profile
