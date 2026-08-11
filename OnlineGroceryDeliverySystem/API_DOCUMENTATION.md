@@ -20,7 +20,7 @@ All request URLs start with the base path `/api`. Authentication tokens are carr
     }
     ```
 *   **Response (201 Created)**:
-    ```json
+    ```json 
     {
       "success": true,
       "token": "eyJhbGciOi...",
