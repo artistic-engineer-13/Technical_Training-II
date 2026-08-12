@@ -4,11 +4,16 @@ import ErrorResponse from '../utils/ErrorHandler.js';
 // Validation middleware helper
 const validateRequest = (schema) => {
   return (req, res, next) => {
-    const { error } = schema.validate(req.body, { abortEarly: false, allowUnknown: true });
+    const { error, value } = schema.validate(req.body, {
+      abortEarly: false,
+      allowUnknown: false,
+      stripUnknown: true,
+    });
     if (error) {
       const errorMessage = error.details.map((details) => details.message).join(', ');
       return next(new ErrorResponse(errorMessage, 400));
     }
+    req.body = value;
     next();
   };
 };
