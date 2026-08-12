@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { fetchCategories, fetchProducts } from '../redux/productSlice';
 import { addToCart, removeFromCart } from '../redux/cartSlice';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,6 +22,7 @@ import { showToast } from '../utils/toast';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Redux state selectors
@@ -99,6 +100,7 @@ const Home = () => {
     if (selectedCategory) params.category = selectedCategory;
     if (searchKeyword) params.search = searchKeyword;
     if (isVegOnly) params.isVeg = true;
+    if (isOrganicOnly) params.isOrganic = true;
     if (priceMin) params.priceMin = priceMin;
     if (priceMax) params.priceMax = priceMax;
     if (sortOption) params.sort = sortOption;
@@ -162,7 +164,7 @@ const Home = () => {
 
   const handleUpdateQuantity = async (productId, currentQty, stock, change) => {
     if (!token) {
-      window.location.href = '/login';
+      navigate('/login');
       return;
     }
     const newQty = currentQty + change;
@@ -182,7 +184,7 @@ const Home = () => {
 
   const handleToggleWishlist = async (productId) => {
     if (!token) {
-      window.location.href = '/login';
+      navigate('/login');
       return;
     }
     try {
