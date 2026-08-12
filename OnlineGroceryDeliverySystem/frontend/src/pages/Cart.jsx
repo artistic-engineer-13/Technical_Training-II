@@ -9,7 +9,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { items: cartItems, subtotal, totalQuantity, loading } = useSelector((state) => state.cart);
+  const { items: cartItems, subtotal, totalQuantity } = useSelector((state) => state.cart);
   const { token } = useSelector((state) => state.auth);
 
   const handleUpdateQuantity = async (productId, currentQty, stock, change) => {
@@ -48,7 +48,6 @@ const Cart = () => {
   };
 
   // Fees and Charges calculations
-  const discount = 0; // Coupons are evaluated at checkout
   const deliveryCharge = subtotal > 500 ? 0 : subtotal > 0 ? 40 : 0;
   const gstTax = Math.round(subtotal * 0.05 * 100) / 100;
   const grandTotal = subtotal + deliveryCharge + gstTax;

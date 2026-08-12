@@ -36,7 +36,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     // Delete confirmPassword before payload send
-    const { confirmPassword, ...signupData } = data;
+    const { confirmPassword: _confirmPassword, ...signupData } = data;
     dispatch(registerUser(signupData));
   };
 
