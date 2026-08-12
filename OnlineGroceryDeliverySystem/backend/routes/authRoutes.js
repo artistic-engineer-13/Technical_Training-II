@@ -30,6 +30,7 @@ router.post('/forgot-password', forgotPassword);
 router.put('/reset-password/:resettoken', resetPassword);
 
 // Protected routes (Requires login)
+router.post('/logout', protect, logoutUser);
 router.get('/logout', protect, logoutUser);
 router.get('/profile', protect, getProfile);
 router.put('/profile', protect, updateProfile);

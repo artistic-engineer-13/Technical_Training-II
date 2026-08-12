@@ -9,16 +9,15 @@ const sendTokenResponse = (user, statusCode, res) => {
   // Create token
   const token = user.getSignedJwtToken();
 
+  const isProduction = process.env.NODE_ENV === 'production';
   const options = {
     expires: new Date(
       Date.now() + (process.env.JWT_COOKIE_EXPIRE || 7) * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction,
   };
-
-  if (process.env.NODE_ENV === 'production') {
-    options.secure = true;
-  }
 
   res.status(statusCode).cookie('token', token, options).json({
     success: true,
@@ -97,13 +96,15 @@ export const loginUser = async (req, res, next) => {
 };
 
 // @desc      Log user out / clear cookie
-// @route     GET /api/auth/logout
+// @route     POST /api/auth/logout
 // @access    Private
 export const logoutUser = async (req, res, next) => {
   try {
-    res.cookie('token', 'none', {
-      expires: new Date(Date.now() + 10 * 1000),
+    const isProduction = process.env.NODE_ENV === 'production';
+    res.clearCookie('token', {
       httpOnly: true,
+      sameSite: isProduction ? 'none' : 'lax',
+      secure: isProduction,
     });
 
     res.status(200).json({
