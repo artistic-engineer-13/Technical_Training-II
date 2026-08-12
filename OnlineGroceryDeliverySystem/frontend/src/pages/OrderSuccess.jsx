@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import API from '../services/api';
 import { useSocket } from '../context/SocketContext';
@@ -16,11 +16,27 @@ const OrderSuccess = () => {
   // Real-time GPS rider location state
   const [riderLocation, setRiderLocation] = useState(null);
 
-  useEffect(() => {
-    if (orderId) {
-      fetchOrderDetails();
+  const fetchOrderDetails = useCallback(async () => {
+    if (!orderId) {
+      setError('Missing order reference. Please check your order history.');
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await API.get(`/orders/${orderId}`);
+      setOrder(response.data.data);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to load order details');
+    } finally {
+      setLoading(false);
     }
   }, [orderId]);
+
+  useEffect(() => {
+    fetchOrderDetails();
+  }, [fetchOrderDetails]);
 
   // Handle Socket.io listening for rider location updates
   useEffect(() => {
@@ -40,18 +56,6 @@ const OrderSuccess = () => {
       }
     };
   }, [socket, orderId]);
-
-  const fetchOrderDetails = async () => {
-    setLoading(true);
-    try {
-      const response = await API.get(`/orders/${orderId}`);
-      setOrder(response.data.data);
-    } catch (err) {
-      setError(err.response?.data?.error || 'Failed to load order details');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleDownloadInvoice = () => {
     if (!orderId) return;
