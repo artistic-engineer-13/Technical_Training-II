@@ -50,6 +50,24 @@ export const validateLogin = validateRequest(
   })
 );
 
+export const validateForgotPassword = validateRequest(
+  Joi.object({
+    email: Joi.string().email().required().messages({
+      'any.required': 'Email is required',
+      'string.email': 'Please provide a valid email address',
+    }),
+  })
+);
+
+export const validateResetPassword = validateRequest(
+  Joi.object({
+    password: Joi.string().required().min(6).messages({
+      'any.required': 'Password is required',
+      'string.min': 'Password must be at least 6 characters long',
+    }),
+  })
+);
+
 // Product schemas
 export const validateProduct = validateRequest(
   Joi.object({

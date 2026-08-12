@@ -16,6 +16,8 @@ import {
 import {
   validateRegister,
   validateLogin,
+  validateForgotPassword,
+  validateResetPassword,
   validateAddress,
 } from '../validators/schemas.js';
 
@@ -26,8 +28,8 @@ const router = express.Router();
 // Public routes
 router.post('/register', validateRegister, registerUser);
 router.post('/login', validateLogin, loginUser);
-router.post('/forgot-password', forgotPassword);
-router.put('/reset-password/:resettoken', resetPassword);
+router.post('/forgot-password', validateForgotPassword, forgotPassword);
+router.put('/reset-password/:resettoken', validateResetPassword, resetPassword);
 
 // Protected routes (Requires login)
 router.post('/logout', protect, logoutUser);
