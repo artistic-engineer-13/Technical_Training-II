@@ -106,7 +106,7 @@ const Home = () => {
     if (sortOption) params.sort = sortOption;
 
     dispatch(fetchProducts(params));
-  }, [selectedCategory, searchKeyword, isVegOnly, isOrganicOnly, priceMin, priceMax, sortOption, dispatch]);
+  }, [selectedCategory, searchKeyword, isVegOnly, isOrganicOnly, priceMin, priceMax, sortOption, isBrowsingOrSearching, dispatch]);
 
   // Category select handler
   const handleCategorySelect = (categorySlug) => {
@@ -206,7 +206,7 @@ const Home = () => {
       setActiveBanner((prev) => (prev + 1) % banners.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [isBrowsingOrSearching]);
+  }, [isBrowsingOrSearching, banners.length]);
 
   // Filtering products client-side for dynamic homepage sections
   const flashDeals = products.filter((p) => p.mrp > p.price).slice(0, 10);
