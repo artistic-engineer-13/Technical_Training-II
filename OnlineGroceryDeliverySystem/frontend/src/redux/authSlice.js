@@ -1,9 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../services/api';
 
+const safeParseJSON = (value, fallback = null) => {
+  if (!value) return fallback;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+};
+
 // Initial state load from localStorage (if existing)
 const token = localStorage.getItem('token') || null;
-const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+const user = safeParseJSON(localStorage.getItem('user'));
 
 // Async Thunks
 export const registerUser = createAsyncThunk(
@@ -79,7 +88,7 @@ export const updateProfile = createAsyncThunk(
       const updatedUser = response.data.data;
       
       // Update local storage user state cache (keeping role and verified flag)
-      const cachedUser = JSON.parse(localStorage.getItem('user') || '{}');
+      const cachedUser = safeParseJSON(localStorage.getItem('user'), {});
       const newCache = { ...cachedUser, name: updatedUser.name, phone: updatedUser.phone };
       localStorage.setItem('user', JSON.stringify(newCache));
 
