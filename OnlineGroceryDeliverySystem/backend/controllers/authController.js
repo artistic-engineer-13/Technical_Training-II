@@ -4,22 +4,12 @@ import Address from '../models/Address.js';
 import ErrorResponse from '../utils/ErrorHandler.js';
 import sendEmail from '../services/emailService.js';
 
-// Send token response via cookie
+// Send token response payload
 const sendTokenResponse = (user, statusCode, res) => {
   // Create token
   const token = user.getSignedJwtToken();
 
-  const isProduction = process.env.NODE_ENV === 'production';
-  const options = {
-    expires: new Date(
-      Date.now() + (process.env.JWT_COOKIE_EXPIRE || 7) * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-    sameSite: isProduction ? 'none' : 'lax',
-    secure: isProduction,
-  };
-
-  res.status(statusCode).cookie('token', token, options).json({
+  res.status(statusCode).json({
     success: true,
     token,
     user: {
@@ -100,13 +90,6 @@ export const loginUser = async (req, res, next) => {
 // @access    Private
 export const logoutUser = async (req, res, next) => {
   try {
-    const isProduction = process.env.NODE_ENV === 'production';
-    res.clearCookie('token', {
-      httpOnly: true,
-      sameSite: isProduction ? 'none' : 'lax',
-      secure: isProduction,
-    });
-
     res.status(200).json({
       success: true,
       data: {},

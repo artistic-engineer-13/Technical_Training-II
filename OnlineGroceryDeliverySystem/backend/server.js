@@ -3,7 +3,6 @@ import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 
@@ -59,9 +58,8 @@ app.use(
 // 3. Define raw body parser specifically for Stripe webhook BEFORE express.json()
 app.post('/api/payments/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 
-// 4. Parse incoming JSON requests and cookie payloads
+// 4. Parse incoming JSON requests
 app.use(express.json());
-app.use(cookieParser());
 
 // Express v5 prototype mutation compatibility middleware
 // Overcomes 'Cannot set property query of #<IncomingMessage> which has only a getter'
