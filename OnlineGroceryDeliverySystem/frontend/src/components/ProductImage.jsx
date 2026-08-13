@@ -56,4 +56,4 @@ const ProductImage = ({ src, alt, className = '', categoryName = '' }) => {
 };
 
 export default ProductImage;
-// this is 
+// this is a
