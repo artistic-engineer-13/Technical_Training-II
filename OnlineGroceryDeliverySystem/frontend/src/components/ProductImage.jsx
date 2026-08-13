@@ -4,7 +4,7 @@ import { RiShoppingBag2Line } from 'react-icons/ri';
 const ProductImage = ({ src, alt, className = '', categoryName = '' }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-
+ 
   // Fallback gradient colors based on product name length to add variety
   const getGradientClass = (name) => {
     const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
