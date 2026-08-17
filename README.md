@@ -19,7 +19,7 @@ The repository will continue to grow throughout the semester as I complete new p
 ---
            
 ## 🛠 Tech Stack           
- 
+   
 ### Frontend
 - HTML5
 - CSS3
