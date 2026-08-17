@@ -35,7 +35,7 @@ The repository will continue to grow throughout the semester as I complete new p
 
 ### Version Control
 - Git
-- GitHub
+- GitHub   
  
 ---  
 
