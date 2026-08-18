@@ -46,7 +46,7 @@ Employee Job Portal/
         ├── middleware/      # JWT auth, role validation
         ├── models/          # Mongoose schemas (User, Profile, Company, Job, App)
         ├── routes/          # Express route definitions
-        ├── services/        # pdf-parse, pdfkit, docx document compilers
+        ├── services/        # pdf-parse, pdfkit, docx document compilers  
         └── uploads/         # Candidate resume upload storage
 ```
 
