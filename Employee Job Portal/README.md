@@ -1,7 +1,7 @@
 # 💼 Employee Job Portal (Cnear)
 
 Cnear is a premium, feature-rich MERN (MongoDB, Express, React, Node.js) Employee Job Portal. It is equipped with advanced features like resume PDF parsing, on-the-fly ATS-friendly PDF/Word resume generation, applicant pipelines, notification hubs, and multi-role dashboards (Employee, Recruiter, Admin).
-  
+    
 ---  
 
 ## 🚀 Key Features  
