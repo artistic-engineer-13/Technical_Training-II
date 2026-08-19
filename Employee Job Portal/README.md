@@ -16,7 +16,7 @@ Cnear is a premium, feature-rich MERN (MongoDB, Express, React, Node.js) Employe
 * **PDF Resume (.pdf)**: Uses `pdfkit` to compile pixel-perfect modern resumes in 3 professional templates:
   * **Classic**: Traditional ATS-friendly layout.
   * **Modern**: Split double-column layout with sidebar and contact badges.
-  * **Creative**: Layout containing bold teal borders.
+  * **Creative**: Layout containing bold teal borders.    
 
 ### 3. Complete Recruitment Pipeline
 * **Job Boards**: Fuzzy text searching and multi-select filtering for salaries, experience tags, and setting preferences.
