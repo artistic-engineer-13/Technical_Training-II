@@ -6,7 +6,7 @@ Cnear is a premium, feature-rich MERN (MongoDB, Express, React, Node.js) Employe
 
 ## 🚀 Key Features  
   
-### 1. Unified Employee Onboarding Flow
+### 1. Unified Employee Onboarding Flow                            
 * **Resume Upload & Parsing**: Uses `pdf-parse` on Node.js to scan resume text, and custom regex segmentation to automatically pre-fill personal data, education history, work experience, skills, and certifications.
 * **Form Editor**: Interactive draft review fields enable candidates to confirm details before saving to MongoDB.
 * **Profile Completion Tracker**: Computes profile completion strength. Reaching 100% unlocks application submissions and resume builders.
