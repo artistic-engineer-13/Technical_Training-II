@@ -118,4 +118,5 @@ Learning Full Stack Web Development using the MERN Stack.
 
 ---
 
-⭐ Thank you for visiting this repository!
+⭐ Thank you for visiting this repository! 
+...
