@@ -80,7 +80,7 @@ Technical_Training-II/
 
 ---
 
-## 📌 Future Plans
+## 📌 Future Plans                                            
 
 Some of the concepts and projects that may be included:
 
