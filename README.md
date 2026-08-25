@@ -15,7 +15,7 @@ In this repository, I will be uploading multiple projects covering different con
 Each project is created to improve my problem-solving skills, coding practices, and understanding of real-world application development.
 
 The repository will continue to grow throughout the semester as I complete new projects.  
-           
+                        
 ---
            
 ## 🛠 Tech Stack           
