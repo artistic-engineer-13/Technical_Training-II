@@ -51,7 +51,7 @@ Projects will be added regularly.
 
 ---
 
-## 🎯 Learning Objectives
+## 🎯 Learning Objectives                 
 
 Through these projects, I aim to:
 
