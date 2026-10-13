@@ -1,6 +1,5 @@
   .  
 
-Test commit for Git date    ...  
- 
+Test commit for Git date    ..
 
   
