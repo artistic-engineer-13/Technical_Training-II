@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchProductDetails, clearProductDetails } from '../redux/productSlice';
 import { addToCart, removeFromCart } from '../redux/cartSlice';
 import API from '../services/api';
@@ -8,7 +8,6 @@ import {
   RiStarFill,
   RiLeafLine,
   RiChat3Line,
-  RiShieldCheckLine,
   RiHeartLine,
   RiHeartFill,
   RiTimeLine
@@ -20,10 +19,11 @@ import { showToast } from '../utils/toast';
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { productDetails: product, loading } = useSelector((state) => state.products);
   const { items: cartItems } = useSelector((state) => state.cart);
-  const { token, user } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
 
   // Local state
   const [reviews, setReviews] = useState([]);
@@ -57,14 +57,7 @@ const ProductDetails = () => {
   }, [token]);
 
   // Fetch reviews and related products once details load
-  useEffect(() => {
-    if (product) {
-      fetchReviews();
-      fetchRelated();
-    }
-  }, [product]);
-
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     setReviewsLoading(true);
     try {
       const response = await API.get(`/reviews/${id}`);
@@ -74,20 +67,28 @@ const ProductDetails = () => {
     } finally {
       setReviewsLoading(false);
     }
-  };
+  }, [id]);
 
-  const fetchRelated = async () => {
+  const fetchRelated = useCallback(async () => {
+    if (!product?.category?._id) return;
     try {
       const response = await API.get(`/products/related/${product.category._id}?currentId=${id}`);
       setRelatedProducts(response.data.data);
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [id, product?.category?._id]);
+
+  useEffect(() => {
+    if (product) {
+      fetchReviews();
+      fetchRelated();
+    }
+  }, [product, fetchReviews, fetchRelated]);
 
   const handleToggleWishlist = async (productId) => {
     if (!token) {
-      window.location.href = '/login';
+      navigate('/login');
       return;
     }
     try {
@@ -125,7 +126,7 @@ const ProductDetails = () => {
 
   const handleUpdateQuantity = async (productId, currentQty, stock, change) => {
     if (!token) {
-      window.location.href = '/login';
+      navigate('/login');
       return;
     }
     const newQty = currentQty + change;
