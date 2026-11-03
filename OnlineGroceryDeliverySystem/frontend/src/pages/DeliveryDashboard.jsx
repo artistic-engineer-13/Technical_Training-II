@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../services/api';
 import { useSocket } from '../context/SocketContext';
-import { RiFileList3Line, RiShieldKeyholeLine, RiMapPinRangeLine, RiSmartphoneLine, RiMapPinLine } from 'react-icons/ri';
+import { RiFileList3Line, RiShieldKeyholeLine, RiMapPinRangeLine, RiSmartphoneLine } from 'react-icons/ri';
 
 const DeliveryDashboard = () => {
   const { socket } = useSocket();

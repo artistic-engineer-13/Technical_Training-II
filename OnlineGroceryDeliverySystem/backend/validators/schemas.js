@@ -4,11 +4,16 @@ import ErrorResponse from '../utils/ErrorHandler.js';
 // Validation middleware helper
 const validateRequest = (schema) => {
   return (req, res, next) => {
-    const { error } = schema.validate(req.body, { abortEarly: false, allowUnknown: true });
+    const { error, value } = schema.validate(req.body, {
+      abortEarly: false,
+      allowUnknown: false,
+      stripUnknown: true,
+    });
     if (error) {
       const errorMessage = error.details.map((details) => details.message).join(', ');
       return next(new ErrorResponse(errorMessage, 400));
     }
+    req.body = value;
     next();
   };
 };
@@ -41,6 +46,24 @@ export const validateLogin = validateRequest(
     }),
     password: Joi.string().required().messages({
       'any.required': 'Password is required',
+    }),
+  })
+);
+
+export const validateForgotPassword = validateRequest(
+  Joi.object({
+    email: Joi.string().email().required().messages({
+      'any.required': 'Email is required',
+      'string.email': 'Please provide a valid email address',
+    }),
+  })
+);
+
+export const validateResetPassword = validateRequest(
+  Joi.object({
+    password: Joi.string().required().min(6).messages({
+      'any.required': 'Password is required',
+      'string.min': 'Password must be at least 6 characters long',
     }),
   })
 );
