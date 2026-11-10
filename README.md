@@ -41,7 +41,7 @@ The repository will continue to grow throughout the semester as I complete new p
 
 ## 📂 Projects
 
-Projects will be added regularly.
+Projects will be added regularly..
 
 | Project No. | Project Name | Status |
 |-------------|-------------|--------|
